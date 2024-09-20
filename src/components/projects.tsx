@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import ProjectCard from './projectCard';
+import { toggleMode } from '../context/toggle';
 
 const projects = [
     {
@@ -31,7 +33,7 @@ const projects = [
     },
     {
         name: "Trimly",
-        overview:"URL Shortner",
+        overview:"A simple URL Shortner.",
         stack: "Reactjs,Tailwind,ExpressJs,MongoDB",
         github:"https://github.com/Muhammad-Owais-Warsi/Trimly",
         link:"https://trimly-4.onrender.com/"
@@ -46,6 +48,9 @@ const projects = [
 ];
 
 export default function Projects() {
+
+    const{mode} = useContext(toggleMode);
+
     return (
         <div className="flex flex-col justify-center items-center mt-20">
             <div className="text-4xl md:text-6xl font-bold text-center mb-10">
@@ -54,10 +59,10 @@ export default function Projects() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center items-center">
                 {projects.map((project, idx) => (
                     project.name === "Coming Soon" ? (
-                        <div key={idx} className="relative mt-7 flex flex-col justify-center items-center p-4 bg-gray-200 border border-dashed border-gray-400 rounded-lg text-center h-[13rem]">
-                            <div className="absolute inset-0 flex flex-col justify-center items-center text-lg font-bold text-gray-700">
+                        <div key={idx} className={`relative mt-7 flex flex-col justify-center items-center p-4 ${mode === "dark" ? "bg-gray-800" : "bg-gray-200"}  border border-dashed border-gray-400 rounded-lg text-center h-[13rem]`}>
+                            <div className={`absolute inset-0 flex flex-col justify-center items-center text-lg font-bold ${mode === "dark" ? "text-white" : "text-gray-600"}`}>
                                 {project.name}
-                                <span className="mt-2 text-sm text-gray-500">{project.overview}</span>
+                                <span className={`text-sm ${mode === "dark" ? "text-white" : "text-gray-600"} mb-4`}>{project.overview}</span>
                             </div>
                         </div>
                     ) : (

@@ -1,6 +1,8 @@
 import { Card, CardHeader } from "@nextui-org/react";
 import GitHub from "../icons/GitHub";
 import Link from "../icons/link";
+import { useContext } from "react";
+import { toggleMode } from "../context/toggle";
 
 type ProjectProp = {
   project: {
@@ -13,12 +15,15 @@ type ProjectProp = {
 };
 
 export default function ProjectCard({ project }: ProjectProp) {
+  const { mode } = useContext(toggleMode);
+
   return (
-    <Card className="py-4 mt-10 w-full md:w-80 relative transform transition duration-500 hover:scale-105 hover:shadow-xl">
+    <Card className={`${mode === "dark" ? "bg-gray-800" : "bg-gray-200"} py-4 mt-10 w-full md:w-80 relative transform transition duration-500 hover:scale-105 hover:shadow-xl`}>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start relative">
         <div className="flex justify-between items-center w-full">
           <div>
-            <h4 className="font-bold text-2xl text-purple-600 mb-1">
+            {/* Heading: black in light mode, white in dark mode */}
+            <h4 className={`${mode === "dark" ? "text-white" : "text-black"} font-bold text-2xl mb-1`}>
               {project.name}
             </h4>
           </div>
@@ -27,7 +32,7 @@ export default function ProjectCard({ project }: ProjectProp) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 p-2 rounded-full hover:bg-gray-200 transition"
+              className={`w-10 h-10 p-2 rounded-full `}
             >
               <GitHub />
             </a>
@@ -35,7 +40,7 @@ export default function ProjectCard({ project }: ProjectProp) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 p-2 rounded-full hover:bg-gray-200 transition"
+              className={`w-10 h-10 p-2 rounded-full hover:bg-white transition`}
             >
               <Link />
             </a>
@@ -43,16 +48,13 @@ export default function ProjectCard({ project }: ProjectProp) {
         </div>
 
         {/* Overview */}
-        <p className="text-sm text-gray-600 font-semibold mt-4 mb-2">Overview:</p>
-        <p className="text-sm text-gray-600 mb-4">{project.overview}</p>
+        <p className={`text-sm ${mode === "dark" ? "text-white" : "text-gray-600"} font-semibold mt-4 mb-2`}>Overview:</p>
+        <p className={`text-sm ${mode === "dark" ? "text-white" : "text-gray-600"} mb-4`}>{project.overview}</p>
 
         {/* Stack */}
-        <p className="text-sm text-gray-600 font-semibold mb-2">Stack:</p>
-        <small className="text-default-500">{project.stack}</small>
+        <p className={`text-sm ${mode === "dark" ? "text-white" : "text-gray-600"} font-semibold mb-2`}>Stack:</p>
+        <small className={`text-sm ${mode === "dark" ? "text-white" : "text-default-500"}`}>{project.stack}</small>
       </CardHeader>
-
-      {/* Project Image */}
- 
     </Card>
   );
 }

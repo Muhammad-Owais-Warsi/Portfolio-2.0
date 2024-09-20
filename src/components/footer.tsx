@@ -4,10 +4,15 @@ import LinkedIn from "../icons/linkedIn";
 import Hashnode from "../icons/hashnode";
 import Instagram from "../icons/instagram";
 import Heart from "../icons/heart";
+import { useContext } from "react";
+import { toggleMode } from "../context/toggle";
 
 const Footer = () => {
+
+  const {mode} = useContext(toggleMode)
+
   return (
-    <footer className="bg-gray-100 mt-20">
+    <footer className={`${mode == "dark" ? "bg-gray-800" : "bg-gray-100"} mt-20`}>
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <p className="mx-auto mt-3 max-w-md text-center leading-relaxed text-gray-500">
           <strong className="text-purple-600">Connect</strong> with me on the following social media platforms.

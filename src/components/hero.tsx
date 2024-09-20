@@ -1,7 +1,13 @@
 import p1 from "/p1.gif"
-
+import hero from "/hero.gif";
+import { useContext } from "react";
+import { toggleMode } from "../context/toggle";
 
 export default function Hero() {
+
+    const {mode} = useContext(toggleMode);
+    
+
     return (
         <div className="flex flex-col justify-center items-center p-4 mt-20">
             <div className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center">
@@ -11,7 +17,7 @@ export default function Hero() {
                 A passionate developer who loves to ship projects.
             </div>
             <div>
-                <img src={p1}></img>
+                <img src={mode == "light" ? p1 : hero} ></img>
             </div>
         </div>
     );
