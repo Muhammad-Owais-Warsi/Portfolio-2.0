@@ -9,7 +9,7 @@ export default function Count() {
 
     useEffect(() => {
         const fetchCount = async () => {
-          const response = await fetch('https://muhammad_owais_warsi-depressedyellowmarten.web.val.run/count-visitor?url=owais-warsi.vercel.app');
+          const response = await fetch('https://muhammad_owais_warsi-count_visits.web.val.run/count-visitor?url=owais-warsi.vercel.app');
           if (response.ok) {
             const { count } = await response.json();
             setCount(count);
