@@ -1,3 +1,4 @@
+import { Button } from "@nextui-org/react";
 import { useState , useEffect } from "react";
 
 
@@ -21,7 +22,9 @@ export default function Count() {
 
     return (
         <div>
-           Number of visits: {count.toString()}
+            <Button disabled>
+                 Number of visits: {count.toString()}
+            </Button>
         </div>
     )
 }

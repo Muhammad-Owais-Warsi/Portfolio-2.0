@@ -43,7 +43,7 @@ export default function Header() {
 
     return (
         <div className="flex justify-between align-middle p-6">
-            <div className="w-10 h-10">
+            <div className="w-10 h-10 mt-5">
                 <a href="/">
                     <Logo />
                 </a>
