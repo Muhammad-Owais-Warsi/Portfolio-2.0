@@ -5,6 +5,7 @@ import { SunIcon } from "../icons/SunIcon";
 import { MoonIcon } from "../icons/MoonIcon";
 import { toggleMode } from "../context/toggle";
 import { useContext } from "react";
+import Count from "./count";
 
 function Toggle() {
 
@@ -47,6 +48,11 @@ export default function Header() {
                     <Logo />
                 </a>
             </div>
+
+            <div className="mt-5">
+                <Count/>
+            </div>
+
             <div className="flex justify-center items-center flex-row-reverse gap-6">
                 <a href="mailto:warsimuhammadowais@gmail.com">
                     <Button className={`border-purple-600 border hover:bg-purple-600 hover:text-white bg-white ${mode == "dark" ? "bg-[rgb(228,228,231)]" : "bg-white"}`}>Hire Me</Button>
@@ -54,8 +60,10 @@ export default function Header() {
                 <div>
                     <Toggle/>
                 </div>
+
             </div>
 
+           
         </div>
     )
 }
